@@ -21,5 +21,6 @@ class PhpServer implements Server
 
     public function sendResponse(Response $response): void
     {
+        //
     }
 }

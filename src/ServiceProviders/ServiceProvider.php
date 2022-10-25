@@ -2,6 +2,7 @@
 
 namespace Responder\ServiceProviders;
 
-interface ServiceProvider {
+interface ServiceProvider
+{
     public function register();
 }

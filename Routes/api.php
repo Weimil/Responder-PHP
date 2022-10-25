@@ -15,10 +15,10 @@ use Responder\Routing\Route;
 
 // Route::prefix('library')->group(function () {
 //     Route::prefix('book')->group(function () {
-//         Route::get('get', []);
+//         Route::get('get', [Controller::class, 'get']);
 //     });
 //     Route::prefix('books')->group(function () {
-//         Route::get('get', []);
+//         Route::get('get', [Controller::class, 'get']);
 //     });
 // });
 

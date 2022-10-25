@@ -10,15 +10,15 @@ class Router
 {
     protected array $routes = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         foreach (HttpMethod::cases() as $item) {
             $this->routes[$item] = [];
         }
     }
 
-    // ════════════════════════════════════════
-
-    public function resolve(Request $request) {
+    public function resolve(Request $request)
+    {
         $method = $request->getHttpMethod();
         $uri = $request->getUri();
 
@@ -36,25 +36,28 @@ class Router
         $this->routes[$httpMethod][$route->getUri()] = $route->getAction();
     }
 
-    // ════════════════════════════════════════
-
-    public function get(Route $route) {
+    public function get(Route $route)
+    {
         $this->registerRoute(HttpMethod::GET, $route);
     }
 
-    public function post(Route $route) {
+    public function post(Route $route)
+    {
         $this->registerRoute(HttpMethod::POST, $route);
     }
 
-    public function put(Route $route) {
+    public function put(Route $route)
+    {
         $this->registerRoute(HttpMethod::PUT, $route);
     }
 
-    public function patch(Route $route) {
+    public function patch(Route $route)
+    {
         $this->registerRoute(HttpMethod::PATCH, $route);
     }
 
-    public function delete(Route $route) {
+    public function delete(Route $route)
+    {
         $this->registerRoute(HttpMethod::DELETE, $route);
     }
 }

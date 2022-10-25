@@ -1,6 +1,6 @@
 <?php
 
-namespace Responser\Base\Entities;
+namespace Responser\Base\Models;
 
 class BaseModel
 {

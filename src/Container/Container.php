@@ -13,22 +13,10 @@ class Container
         }
 
         if (is_null($build)) {
-            echo "-> isNull | {$class} | {$build} |\n";
-    
-            self::$instances[$class] = new $class();
-
-            echo json_encode(self::$instances, JSON_PRETTY_PRINT) . "\n";
-
             return self::$instances[$class];
         }
 
         if (is_string($build)) {
-            echo "-> isString | {$class} | {$build} |\n";
-                                            
-            self::$instances[$class] = new $build();
-
-            echo json_encode(self::$instances, JSON_PRETTY_PRINT) . "\n";
-
             return self::$instances[$class];
         }
 

@@ -7,7 +7,6 @@ use Responder\Http\HttpNoActionFoundException;
 use Responder\Http\Response;
 use Responder\Http\Request;
 use Responder\Routing\Router;
-use Responder\Server\PhpServer;
 use Responder\Server\Server;
 
 class Application
@@ -24,49 +23,37 @@ class Application
 
     public Response $response;
 
-    public function __construct()
-    {
-        //
-    }
-
     public function bootstrap(string $basePath): self
     {
-        $app = singleton(self::class);
+        $this->basePath = $basePath;
 
-        $app->basePath = $basePath;
-
-        return $app
-            ->loadConfig()
-            ->runServiceProviders('boot')
-            ->setHttpHandlers()
-            ->runServiceProviders('runtime');
-    }
-
-    protected function loadConfig(): self
-    {
-        Config::loadConfig($this->basePath);
+        $this->loadConfig();
+        $this->runServiceProviders('boot');
+        $this->setHttpHandlers();
+        $this->runServiceProviders('runtime');
 
         return $this;
     }
 
-    protected function runServiceProviders(string $type): self
+    protected function loadConfig(): void
+    {
+        Config::loadConfig($this->basePath);
+    }
+
+    protected function runServiceProviders(string $type): void
     {
         foreach (config('providers')[$type] as $item) {
             $item = new $item();
             $item->register();
         }
-
-        return $this;
     }
 
-    protected function setHttpHandlers(): self
+    protected function setHttpHandlers(): void
     {
         $this->server = singleton(Server::class);
         $this->router = singleton(Router::class);
         $this->request = singleton(Request::class);
         $this->response = singleton(Response::class);
-
-        return $this;
     }
 
     public function run(): void

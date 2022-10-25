@@ -29,21 +29,17 @@ class Route
     {
         $this->action = $action;
     }
-    
+
     public function __construct(string $uri, Closure|array $action)
     {
         $this->uri = $uri;
         $this->action = $action;
     }
 
-    // ════════════════════════════════════════
-
     public static function load(string $routesDirectory)
     {
         require_once $routesDirectory . '/api.php';
     }
-
-    // ════════════════════════════════════════
 
     public static function get(string $uri, Closure|array $action): void
     {

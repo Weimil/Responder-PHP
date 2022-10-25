@@ -13,12 +13,12 @@ function application()
     return singleton(Application::class);
 }
 
-function env(string $variable, $default = null)
-{
-    return $_ENV[$variable] ?? $default;
-}
-
 function config(string $configuration)
 {
     return Config::getConfig($configuration);
+}
+
+function env(string $variable, $default = null)
+{
+    return $_ENV[$variable] ?? $default;
 }

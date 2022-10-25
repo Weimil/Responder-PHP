@@ -4,6 +4,7 @@ namespace Responder\Http;
 
 use Exception;
 
-class HttpNoActionFoundException extends Exception {
-    
+class HttpNoActionFoundException extends Exception
+{
+    //
 }

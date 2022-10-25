@@ -14,7 +14,7 @@ class Config
             if (is_dir($configPath . DIRECTORY_SEPARATOR . $item)) {
                 continue;
             }
-    
+
             $values = require_once $configPath . DIRECTORY_SEPARATOR . $item;
             self::$config += $values;
         }
