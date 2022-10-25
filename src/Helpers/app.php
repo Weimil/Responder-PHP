@@ -1,5 +1,6 @@
 <?php
 
+use Responder\Application;
 use Responder\Config\Config;
 use Responder\Container\Container;
 
@@ -10,7 +11,7 @@ function singleton(string $class, string|callable|null $build = null)
 
 function application()
 {
-    return singleton(Application::class);
+    return singleton(Application::class, Application::class);
 }
 
 function config(string $configuration)

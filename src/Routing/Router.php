@@ -13,13 +13,15 @@ class Router
     public function __construct()
     {
         foreach (HttpMethod::cases() as $item) {
-            $this->routes[$item] = [];
+            $this->routes[$item->value] = [];
         }
     }
 
     public function resolve(Request $request)
     {
-        $method = $request->getHttpMethod();
+        // echo json_encode($this->routes, JSON_PRETTY_PRINT) . "\n";
+
+        $method = $request->getHttpMethod()->value;
         $uri = $request->getUri();
 
         $action = $this->routes[$method][$uri] ?? null;
@@ -33,7 +35,7 @@ class Router
 
     protected function registerRoute(HttpMethod $httpMethod, Route $route)
     {
-        $this->routes[$httpMethod][$route->getUri()] = $route->getAction();
+        $this->routes[$httpMethod->value][$route->getUri()] = $route->getAction();
     }
 
     public function get(Route $route)

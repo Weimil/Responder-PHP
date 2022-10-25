@@ -52,8 +52,7 @@ class Application
     {
         $this->server = singleton(Server::class);
         $this->router = singleton(Router::class);
-        $this->request = singleton(Request::class);
-        $this->response = singleton(Response::class);
+        $this->request = singleton(Request::class, fn () => $this->server->getRequest());
     }
 
     public function run(): void
