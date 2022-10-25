@@ -1,6 +1,6 @@
 # Responder
 
-Responder is a PHP framework for REST API development.
+Responder is a PHP framework for REST API development. Heavily inspired by Laravel.
 
 ## Required
 

@@ -1,0 +1,19 @@
+/.vscode
+/vendor
+composer.lock
+.php-cs-fixer.cache
+*.txt
+
+# Ignore private folders and files
+private
+*.private
+*.private.*
+
+# Ignore big files 
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Ignore enviroment files
+*.env
