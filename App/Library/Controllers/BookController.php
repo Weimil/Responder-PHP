@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Library\Controllers;
+
 use Responser\Base\Controllers\BaseController;
 
 class BookController extends BaseController

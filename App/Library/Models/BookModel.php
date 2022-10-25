@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Example\Entities;
+namespace App\Library\Models;
 
-use Responser\Base\Entities\BaseModel;
+use Responser\Base\Models\BaseModel;
 
-class Book extends BaseModel
+class BookModel extends BaseModel
 {
     // ════════════════════════════════════════
 
@@ -26,8 +26,8 @@ class Book extends BaseModel
 
     // ════════════════════════════════════════
 
-    public static function query()
+    public function query()
     {
-        return;
+        //
     }
 }
