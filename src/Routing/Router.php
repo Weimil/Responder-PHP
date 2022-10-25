@@ -12,9 +12,11 @@ class Router
 
     public function __construct() {
         foreach (HttpMethod::cases() as $item) {
-            $this->routes[$item->value] = [];
+            $this->routes[$item] = [];
         }
     }
+
+    // ════════════════════════════════════════
 
     public function resolve(Request $request) {
         $method = $request->getHttpMethod();
@@ -29,23 +31,30 @@ class Router
         return $action;
     }
 
-    public function get(string $uri, callable $action) {
-        $this->routes[HttpMethod::GET->value][$uri] = $action;
+    protected function registerRoute(HttpMethod $httpMethod, Route $route)
+    {
+        $this->routes[$httpMethod][$route->getUri()] = $route->getAction();
     }
 
-    public function post(string $uri, callable $action) {
-        $this->routes[HttpMethod::POST->value][$uri] = $action;
+    // ════════════════════════════════════════
+
+    public function get(Route $route) {
+        $this->registerRoute(HttpMethod::GET, $route);
     }
 
-    public function put(string $uri, callable $action) {
-        $this->routes[HttpMethod::PUT->value][$uri] = $action;
+    public function post(Route $route) {
+        $this->registerRoute(HttpMethod::POST, $route);
     }
 
-    public function patch(string $uri, callable $action) {
-        $this->routes[HttpMethod::PATCH->value][$uri] = $action;
+    public function put(Route $route) {
+        $this->registerRoute(HttpMethod::PUT, $route);
     }
 
-    public function delete(string $uri, callable $action) {
-        $this->routes[HttpMethod::DELETE->value][$uri] = $action;
+    public function patch(Route $route) {
+        $this->registerRoute(HttpMethod::PATCH, $route);
+    }
+
+    public function delete(Route $route) {
+        $this->registerRoute(HttpMethod::DELETE, $route);
     }
 }

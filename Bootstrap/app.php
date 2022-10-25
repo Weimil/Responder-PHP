@@ -15,8 +15,10 @@ use Responder\Application;
     ╚══════════════════════════════════════════════════════════════════════════════╝
 */
 
-$application = new Application($_ENV['APP_BASE_PATH'] ?? dirname(__DIR__ . '/..'));
+$application = new Application();
 
-$application->bootstrap();
+$application->bootstrap(
+    $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__ . '/../..')
+);
 
 return $application;

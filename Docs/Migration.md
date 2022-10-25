@@ -112,12 +112,14 @@ To run all migrations, execute the `migrate` command:
 
 ```bash
 $ composer migrate
+Okay!
 ```
 
 If you want to have a visual indication of the progress of the migration execute the `migrate --verbose` command:
 
 ```bash
 $ composer migrate --verbose
+Okay!
 ```
 
 If you want to

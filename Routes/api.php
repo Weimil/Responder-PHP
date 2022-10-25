@@ -13,4 +13,17 @@ use Responder\Routing\Route;
 |
 */
 
-Route::post();
+// Route::prefix('library')->group(function () {
+//     Route::prefix('book')->group(function () {
+//         Route::get('get', []);
+//     });
+//     Route::prefix('books')->group(function () {
+//         Route::get('get', []);
+//     });
+// });
+
+Route::get('library/book/get', [BookController::class, 'get']);
+Route::put('library/book/put', [BookController::class, 'put']);
+Route::post('library/book/post', [BookController::class, 'post']);
+Route::patch('library/book/patch', [BookController::class, 'patch']);
+Route::delete('library/book/delete', [BookController::class, 'delete']);

@@ -15,11 +15,8 @@ class Config
                 continue;
             }
     
-            if (!mb_ereg_match('$\.php', $item)) {
-                continue;
-            }
-    
-            $config[] = require_once $item;
+            $values = require_once $configPath . DIRECTORY_SEPARATOR . $item;
+            self::$config += $values;
         }
     }
 

@@ -7,7 +7,8 @@ use Responder\Http\HttpNoActionFoundException;
 use Responder\Http\Response;
 use Responder\Http\Request;
 use Responder\Routing\Router;
-use Responder\Server\ResponderServer;
+use Responder\Server\PhpServer;
+use Responder\Server\Server;
 
 class Application
 {
@@ -15,7 +16,7 @@ class Application
 
     protected string $basePath;
 
-    public ResponderServer $responderServer;
+    public Server $server;
 
     public Router $router;
 
@@ -23,37 +24,49 @@ class Application
 
     public Response $response;
 
-    public function __construct(string $basePath)
+    public function __construct()
     {
-        $this->basePath = $basePath;
-        singleton(self::class);
+        //
     }
 
-    public function bootstrap(): void
+    public function bootstrap(string $basePath): self
     {
-        $this->loadConfig();
-        $this->setHttpHandlers();
-        $this->runServiceProviders();
+        $app = singleton(self::class);
+
+        $app->basePath = $basePath;
+
+        return $app
+            ->loadConfig()
+            ->runServiceProviders('boot')
+            ->setHttpHandlers()
+            ->runServiceProviders('runtime');
     }
 
-    protected function loadConfig(): void
+    protected function loadConfig(): self
     {
         Config::loadConfig($this->basePath);
+
+        return $this;
     }
 
-    protected function setHttpHandlers(): void
+    protected function runServiceProviders(string $type): self
     {
-        $this->responderServer = singleton(ResponderServer::class);
+        foreach (config('providers')[$type] as $item) {
+            $item = new $item();
+            $item->register();
+        }
+
+        return $this;
+    }
+
+    protected function setHttpHandlers(): self
+    {
+        $this->server = singleton(Server::class);
         $this->router = singleton(Router::class);
         $this->request = singleton(Request::class);
         $this->response = singleton(Response::class);
-    }
 
-    protected function runServiceProviders(): void
-    {
-        foreach (config('providers') as $item) {
-            (new $item())->registerServices();
-        }
+        return $this;
     }
 
     public function run(): void
