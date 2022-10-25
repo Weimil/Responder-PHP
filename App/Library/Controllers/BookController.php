@@ -2,30 +2,30 @@
 
 use Responser\Base\Controllers\BaseController;
 
-class UserController extends BaseController
+class BookController extends BaseController
 {
     public function get()
     {
-        return;
+        return 'GET OKAY';
     }
 
     public function put()
     {
-        return;
+        return 'PUT OKAY';
     }
 
     public function post()
     {
-        return;
+        return 'POST OKAY';
     }
 
     public function patch()
     {
-        return;
+        return 'PATCH OKAY';
     }
 
     public function delete()
     {
-        return;
+        return 'DELETE OKAY';
     }
 }

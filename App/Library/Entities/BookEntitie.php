@@ -4,11 +4,11 @@ namespace App\Example\Entities;
 
 use Responser\Base\Entities\BaseModel;
 
-class User extends BaseModel
+class Book extends BaseModel
 {
     // ════════════════════════════════════════
 
-    const TABLE = 'users';
+    const TABLE = 'books';
 
     const ID = 'id';
 
