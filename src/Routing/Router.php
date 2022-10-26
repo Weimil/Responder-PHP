@@ -2,9 +2,11 @@
 
 namespace Responder\Routing;
 
+use App\Library\Controllers\BookController;
 use Responder\Http\HttpMethod;
 use Responder\Http\HttpNoActionFoundException;
 use Responder\Http\Request;
+use Responder\Http\Response;
 
 class Router
 {
@@ -17,49 +19,66 @@ class Router
         }
     }
 
-    public function resolve(Request $request)
+    // ==============
+
+    public function resolveRequest(Request $request): Response
     {
-        // echo json_encode($this->routes, JSON_PRETTY_PRINT) . "\n";
+        $route = $this->resolveRoute($request);
+        $request->setRoute($route);
+        $action = $route->getAction();
 
-        $method = $request->getHttpMethod()->value;
-        $uri = $request->getUri();
+        return $action();
+    }
 
-        $action = $this->routes[$method][$uri] ?? null;
+    // ==============
 
-        if (is_null($action)) {
-            throw new HttpNoActionFoundException();
+    protected function resolveRoute(Request $request): Route
+    {
+        foreach ($this->routes[$request->getHttpMethod()->value] as $route) {
+            if ($request->getUri() === $route->getUri()) {
+                echo json_encode(
+                    [
+                        $route->getUri(),
+                        $route->getAction()
+                    ],
+                    JSON_PRETTY_PRINT
+                ) . "\n";
+                return $route;
+            }
         }
 
-        return $action;
+        throw new HttpNoActionFoundException();
     }
 
-    protected function registerRoute(HttpMethod $httpMethod, Route $route)
+    protected function registerRoute(HttpMethod $httpMethod, Route $route): Route
     {
-        $this->routes[$httpMethod->value][$route->getUri()] = $route->getAction();
+        return $this->routes[$httpMethod->value][] = $route;
     }
 
-    public function get(Route $route)
+    // ==============
+
+    public function get(Route $route): Route
     {
-        $this->registerRoute(HttpMethod::GET, $route);
+        return $this->registerRoute(HttpMethod::GET, $route);
     }
 
-    public function post(Route $route)
+    public function post(Route $route): Route
     {
-        $this->registerRoute(HttpMethod::POST, $route);
+        return $this->registerRoute(HttpMethod::POST, $route);
     }
 
-    public function put(Route $route)
+    public function put(Route $route): Route
     {
-        $this->registerRoute(HttpMethod::PUT, $route);
+        return $this->registerRoute(HttpMethod::PUT, $route);
     }
 
-    public function patch(Route $route)
+    public function patch(Route $route): Route
     {
-        $this->registerRoute(HttpMethod::PATCH, $route);
+        return $this->registerRoute(HttpMethod::PATCH, $route);
     }
 
-    public function delete(Route $route)
+    public function delete(Route $route): Route
     {
-        $this->registerRoute(HttpMethod::DELETE, $route);
+        return $this->registerRoute(HttpMethod::DELETE, $route);
     }
 }

@@ -2,11 +2,15 @@
 
 namespace Responder\Http;
 
+use Responder\Routing\Route;
+
 class Request
 {
     protected string $uri;
 
     protected HttpMethod $httpMethod;
+
+    protected Route $route;
 
     public function getUri(): string
     {
@@ -26,5 +30,15 @@ class Request
     public function setHttpMethod(HttpMethod $httpMethod): void
     {
         $this->httpMethod = $httpMethod;
+    }
+
+    public function getRoute(): Route
+    {
+        return $this->route;
+    }
+
+    public function setRoute(Route $route): void
+    {
+        $this->route = $route;
     }
 }

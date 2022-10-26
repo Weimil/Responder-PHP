@@ -55,10 +55,15 @@ class Application
         $this->request = singleton(Request::class, fn () => $this->server->getRequest());
     }
 
+    protected function terminate(Response $response) {
+        $this->server->sendResponse($response);
+        exit();
+    }
+
     public function run(): void
     {
         try {
-            $this->server->sendResponse($this->router->resolve($this->request));
+            $this->terminate($this->router->resolveRequest($this->request));
         } catch (HttpNoActionFoundException) {
             http_response_code(404);
         }

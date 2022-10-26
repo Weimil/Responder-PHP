@@ -41,28 +41,28 @@ class Route
         require_once $routesDirectory . '/api.php';
     }
 
-    public static function get(string $uri, Closure|array $action): void
+    public static function get(string $uri, Closure|array $action): Route
     {
-        application()->router->get(new Route($uri, $action));
+        return application()->router->get(new Route($uri, $action));
     }
 
-    public static function post(string $uri, Closure|array $action): void
+    public static function post(string $uri, Closure|array $action): Route
     {
-        application()->router->post(new Route($uri, $action));
+        return application()->router->post(new Route($uri, $action));
     }
 
-    public static function put(string $uri, Closure|array $action): void
+    public static function put(string $uri, Closure|array $action): Route
     {
-        application()->router->put(new Route($uri, $action));
+        return application()->router->put(new Route($uri, $action));
     }
 
-    public static function patch(string $uri, Closure|array $action): void
+    public static function patch(string $uri, Closure|array $action): Route
     {
-        application()->router->patch(new Route($uri, $action));
+        return application()->router->patch(new Route($uri, $action));
     }
 
-    public static function delete(string $uri, Closure|array $action): void
+    public static function delete(string $uri, Closure|array $action): Route
     {
-        application()->router->delete(new Route($uri, $action));
+        return application()->router->delete(new Route($uri, $action));
     }
 }

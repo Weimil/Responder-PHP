@@ -1,5 +1,6 @@
 <?php
 
+use App\Library\Controllers\BookController;
 use Responder\Routing\Route;
 
 /*
@@ -22,8 +23,8 @@ use Responder\Routing\Route;
 //     });
 // });
 
-Route::get('library/book/get', [BookController::class, 'get']);
-Route::put('library/book/put', [BookController::class, 'put']);
-Route::post('library/book/post', [BookController::class, 'post']);
-Route::patch('library/book/patch', [BookController::class, 'patch']);
-Route::delete('library/book/delete', [BookController::class, 'delete']);
+Route::get('/library/book', [BookController::class, 'get']);
+Route::put('/library/book', [BookController::class, 'put']);
+Route::post('/library/book', [BookController::class, 'post']);
+Route::patch('/library/book', [BookController::class, 'patch']);
+Route::delete('/library/book', [BookController::class, 'delete']);
