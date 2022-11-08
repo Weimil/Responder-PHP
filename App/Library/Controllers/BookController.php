@@ -2,7 +2,7 @@
 
 namespace App\Library\Controllers;
 
-use Responser\Base\Controllers\BaseController;
+use Responder\Base\Controllers\BaseController;
 
 class BookController extends BaseController
 {

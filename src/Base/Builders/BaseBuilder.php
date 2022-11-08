@@ -1,6 +1,6 @@
 <?php
 
-namespace Responser\Base\Builders;
+namespace Responder\Base\Builders;
 
 class BaseBuilder
 {

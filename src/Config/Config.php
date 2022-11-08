@@ -6,7 +6,7 @@ class Config
 {
     protected static array $config = [];
 
-    public static function loadConfig(string $basePath)
+    public static function loadConfig(string $basePath): void
     {
         $configPath = $basePath . '/Config';
 

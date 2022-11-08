@@ -2,7 +2,7 @@
 
 namespace App\Library\Resources;
 
-use Responser\Base\Resource\BaseResource;
+use Responder\Base\Resources\BaseResource;
 
 class BookResource extends BaseResource
 {

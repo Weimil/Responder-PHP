@@ -32,17 +32,10 @@ class Router
 
     // ==============
 
-    protected function resolveRoute(Request $request): Route
+    public function resolveRoute(Request $request): Route
     {
         foreach ($this->routes[$request->getHttpMethod()->value] as $route) {
             if ($request->getUri() === $route->getUri()) {
-                echo json_encode(
-                    [
-                        $route->getUri(),
-                        $route->getAction()
-                    ],
-                    JSON_PRETTY_PRINT
-                ) . "\n";
                 return $route;
             }
         }

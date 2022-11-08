@@ -55,7 +55,8 @@ class Application
         $this->request = singleton(Request::class, fn () => $this->server->getRequest());
     }
 
-    protected function terminate(Response $response) {
+    protected function terminate(Response $response): void
+    {
         $this->server->sendResponse($response);
         exit();
     }

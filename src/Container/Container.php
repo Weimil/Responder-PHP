@@ -13,15 +13,17 @@ class Container
         }
 
         if (is_null($build)) {
-            return self::$instances[$class] = new $class();
+            self::$instances[$class] = new $class();
         }
 
         if (is_string($build)) {
-            return self::$instances[$class] = new $build();
+            self::$instances[$class] = new $build();
         }
 
         if (is_callable($build)) {
-            return self::$instances[$class] = $build();
+            self::$instances[$class] = $build();
         }
+        
+        return self::$instances[$class];
     }
 }

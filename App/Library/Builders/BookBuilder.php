@@ -2,7 +2,7 @@
 
 namespace App\Library\Builders;
 
-use Responser\Base\Builders\BaseBuilder;
+use Responder\Base\Builders\BaseBuilder;
 
 class BookBuilder extends BaseBuilder
 {

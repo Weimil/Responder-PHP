@@ -2,7 +2,7 @@
 
 namespace App\Library\Models;
 
-use Responser\Base\Models\BaseModel;
+use Responder\Base\Models\BaseModel;
 
 class BookModel extends BaseModel
 {

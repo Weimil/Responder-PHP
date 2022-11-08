@@ -1,6 +1,6 @@
 <?php
 
-namespace Responser\Base\Resource;
+namespace Responder\Base\Resources;
 
 class BaseResource
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Responser\Base\Requests;
+namespace Responder\Base\Requests;
 
 class BaseRequest
 {

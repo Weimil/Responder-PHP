@@ -1,6 +1,6 @@
 <?php
 
-namespace Responser\Base\Models;
+namespace Responder\Base\Models;
 
 class BaseModel
 {

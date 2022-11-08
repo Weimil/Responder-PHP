@@ -1,6 +1,6 @@
 <?php
 
-namespace Responser\Base\Controllers;
+namespace Responder\Base\Controllers;
 
 class BaseController
 {
