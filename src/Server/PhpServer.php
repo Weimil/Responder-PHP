@@ -5,7 +5,6 @@ namespace Responder\Server;
 use Responder\Http\HttpMethod;
 use Responder\Http\Request;
 use Responder\Http\Response;
-use Responder\Server\Server;
 
 class PhpServer implements Server
 {

@@ -2,13 +2,15 @@
 
 namespace App\Library\Controllers;
 
+use App\Library\Resources\BookResource;
+use App\Library\Services\Book\BookGetService;
 use Responder\Base\Controllers\BaseController;
 
 class BookController extends BaseController
 {
-    public function get()
+    public function get(BookGetService $service)
     {
-        return 'GET OKAY';
+        return response()->json(new BookResource($service->handle()), self::HTTP_CODE_CREATED);
     }
 
     public function put()

@@ -11,7 +11,7 @@ use Responder\Server\Server;
 
 class Application
 {
-    const VERSION = '0.0.1';
+//    const VERSION = '0.0.1';
 
     protected string $basePath;
 
@@ -64,14 +64,11 @@ class Application
     public function run(): void
     {
         try {
-            $this->terminate($this->router->resolveRequest($this->request));
+            $route = $this->router->resolveRoute($this->request);
+            $this->request->setRoute($route);
+            $action = $route->getAction();
         } catch (HttpNoActionFoundException) {
             http_response_code(404);
         }
-    }
-
-    public function getBasePath()
-    {
-        return $this->basePath;
     }
 }

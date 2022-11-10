@@ -25,6 +25,7 @@ class RouterTest extends TestCase
         $uri = '/test';
         $action = fn() => "test";
         $router = new Router();
+    
         $router->get(new Route($uri, $action));
         
         $route = $router->resolveRoute($this->mockRequest($uri, HttpMethod::GET));

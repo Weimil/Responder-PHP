@@ -11,19 +11,13 @@ class Container
         if (array_key_exists($class, self::$instances)) {
             return self::$instances[$class];
         }
-
-        if (is_null($build)) {
-            self::$instances[$class] = new $class();
-        }
-
-        if (is_string($build)) {
-            self::$instances[$class] = new $build();
-        }
-
-        if (is_callable($build)) {
-            self::$instances[$class] = $build();
-        }
-        
+    
+        match(true) {
+            is_null($build) => self::$instances[$class] = new $class(),
+            is_string($build) => self::$instances[$class] = new $build(),
+            is_callable($build) => self::$instances[$class] = $build()
+        };
+    
         return self::$instances[$class];
     }
 }

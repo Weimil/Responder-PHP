@@ -2,7 +2,6 @@
 
 namespace Responder\Routing;
 
-use App\Library\Controllers\BookController;
 use Responder\Http\HttpMethod;
 use Responder\Http\HttpNoActionFoundException;
 use Responder\Http\Request;
@@ -21,13 +20,18 @@ class Router
 
     // ==============
 
-    public function resolveRequest(Request $request): Response
+    public function resolveRequest(Request $request)
     {
         $route = $this->resolveRoute($request);
         $request->setRoute($route);
         $action = $route->getAction();
 
-        return $action();
+        if (is_array($action)) {
+            $action[0] = new $action[0]();
+            
+        }
+        
+        return $action($request);
     }
 
     // ==============

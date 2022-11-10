@@ -24,7 +24,7 @@ use Responder\Routing\Route;
 // });
 
 Route::get('/library/book', [BookController::class, 'get']);
-Route::put('/library/book', [BookController::class, 'put']);
-Route::post('/library/book', [BookController::class, 'post']);
-Route::patch('/library/book', [BookController::class, 'patch']);
-Route::delete('/library/book', [BookController::class, 'delete']);
+//Route::put('/library/book', [BookController::class, 'put']);
+//Route::post('/library/book', [BookController::class, 'post']);
+//Route::patch('/library/book', [BookController::class, 'patch']);
+//Route::delete('/library/book', [BookController::class, 'delete']);

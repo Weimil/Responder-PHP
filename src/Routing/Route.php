@@ -36,7 +36,7 @@ class Route
         $this->action = $action;
     }
 
-    public static function load(string $routesDirectory)
+    public static function load(string $routesDirectory): void
     {
         require_once $routesDirectory . '/api.php';
     }
