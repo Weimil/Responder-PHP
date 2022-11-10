@@ -2,7 +2,7 @@
 .idea/
 vendor
 composer.lock
-*.cache
+.phpunit.result.cache
 *.txt
 
 # Ignore private folders and files
