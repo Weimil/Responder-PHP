@@ -1,6 +1,6 @@
-/.vscode
-/.idea
-/vendor
+.vscode
+.idea/
+vendor
 composer.lock
 *.cache
 *.txt
