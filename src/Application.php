@@ -2,8 +2,8 @@
 
 namespace Responder;
 
+use Exception;
 use Responder\Config\Config;
-use Responder\Http\HttpNoActionFoundException;
 use Responder\Http\Response;
 use Responder\Http\Request;
 use Responder\Routing\Router;
@@ -11,8 +11,6 @@ use Responder\Server\Server;
 
 class Application
 {
-//    const VERSION = '0.0.1';
-
     protected string $basePath;
 
     public Server $server;
@@ -23,7 +21,7 @@ class Application
 
     public Response $response;
 
-    public function bootstrap(string $basePath): self
+    public function boot(string $basePath): void
     {
         $this->basePath = $basePath;
 
@@ -31,8 +29,6 @@ class Application
         $this->runServiceProviders('boot');
         $this->setHttpHandlers();
         $this->runServiceProviders('runtime');
-
-        return $this;
     }
 
     protected function loadConfig(): void
@@ -43,8 +39,7 @@ class Application
     protected function runServiceProviders(string $type): void
     {
         foreach (config('providers')[$type] as $item) {
-            $item = new $item();
-            $item->register();
+            (new $item())->register();
         }
     }
 
@@ -55,20 +50,27 @@ class Application
         $this->request = singleton(Request::class, fn () => $this->server->getRequest());
     }
 
+
+    public function run(): void
+    {
+        try {
+            $response = $this->router->resolveRequest($this->request);
+            $this->terminate($response);
+        } catch (Exception $exception) {
+            $response = Response::text("404 Not found\n" . $exception);
+            $response->setStatus(404);
+            $this->terminate($response);
+        }
+    }
+    
     protected function terminate(Response $response): void
     {
         $this->server->sendResponse($response);
         exit();
     }
-
-    public function run(): void
+    
+    public function getBasePath(): string
     {
-        try {
-            $route = $this->router->resolveRoute($this->request);
-            $this->request->setRoute($route);
-            $action = $route->getAction();
-        } catch (HttpNoActionFoundException) {
-            http_response_code(404);
-        }
+        return $this->basePath;
     }
 }

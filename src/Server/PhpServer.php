@@ -20,15 +20,8 @@ class PhpServer implements Server
 
     public function sendResponse(Response $response): void
     {
-        header("Content-Type: None");
-        header_remove("Content-Type");
-
         $response->prepare();
-        http_response_code($response->getStatus());
-        foreach ($response->getHeaders() as $header => $value) {
-            header("$header: $value");
-        }
-        print($response->getContent());
-
+    
+        print $response->getContent();
     }
 }

@@ -23,8 +23,8 @@ use Responder\Routing\Route;
 //     });
 // });
 
-Route::get('/library/book', [BookController::class, 'get']);
-//Route::put('/library/book', [BookController::class, 'put']);
-//Route::post('/library/book', [BookController::class, 'post']);
-//Route::patch('/library/book', [BookController::class, 'patch']);
-//Route::delete('/library/book', [BookController::class, 'delete']);
+Route::get('/test', [BookController::class, 'get']);
+Route::put('/test', [BookController::class, 'put']);
+Route::post('/test', [BookController::class, 'post']);
+Route::patch('/test', [BookController::class, 'patch']);
+Route::delete('/test', [BookController::class, 'delete']);

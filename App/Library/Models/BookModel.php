@@ -18,11 +18,11 @@ class BookModel extends BaseModel
 
     // ════════════════════════════════════════
 
-    protected $connection;
+    protected string $connection;
 
-    protected $table = self::TABLE;
+    protected string $table = self::TABLE;
 
-    protected $primaryKey = self::ID;
+    protected string $primaryKey = self::ID;
 
     // ════════════════════════════════════════
 

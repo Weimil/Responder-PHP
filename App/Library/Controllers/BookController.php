@@ -5,31 +5,33 @@ namespace App\Library\Controllers;
 use App\Library\Resources\BookResource;
 use App\Library\Services\Book\BookGetService;
 use Responder\Base\Controllers\BaseController;
+use Responder\Http\Response;
 
 class BookController extends BaseController
 {
-    public function get(BookGetService $service)
+    public function get(): Response
     {
-        return response()->json(new BookResource($service->handle()), self::HTTP_CODE_CREATED);
+        return Response::json(['Result -> GET']);
+//        return response()->json(new BookResource($service->handle()), self::HTTP_CODE_CREATED);
     }
 
-    public function put()
+    public function put(): Response
     {
-        return 'PUT OKAY';
+        return Response::json(['Result -> PUT']);
     }
 
-    public function post()
+    public function post(): Response
     {
-        return 'POST OKAY';
+        return Response::json(['Result -> POST']);
     }
 
-    public function patch()
+    public function patch(): Response
     {
-        return 'PATCH OKAY';
+        return Response::json(['Result -> PATCH']);
     }
 
-    public function delete()
+    public function delete(): Response
     {
-        return 'DELETE OKAY';
+        return Response::json(['Result -> DELETE']);
     }
 }
