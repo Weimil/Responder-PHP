@@ -2,6 +2,7 @@
 
 namespace App\Library\Models;
 
+use App\Library\Services\Book\BookServices;
 use Responder\Base\Models\BaseModel;
 
 class BookModel extends BaseModel
@@ -30,4 +31,10 @@ class BookModel extends BaseModel
     {
         //
     }
+    
+    // ════════════════════════════════════════
+    
+    const REPO = [
+        'services' => BookServices::class
+    ];
 }

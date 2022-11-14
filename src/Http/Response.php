@@ -2,6 +2,8 @@
 
 namespace Responder\Http;
 
+use Responder\Base\Models\BaseClass;
+
 class Response
 {
     protected int $status = 200;
@@ -18,6 +20,20 @@ class Response
         $response->setContent(json_encode($data));
         
         return $response;
+    }
+    
+    public function jsonTest(array $objectArray): self
+    {
+        $data = [];
+        
+        foreach ($objectArray as $object) {
+            $data[] = $object->toArray();
+        }
+        
+        response()->setContentType("application/json");
+        response()->setContent(json_encode($data));
+        
+        return $this;
     }
     
     public function setContentType(string $value): void

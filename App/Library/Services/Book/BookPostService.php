@@ -2,9 +2,20 @@
 
 namespace App\Library\Services\Book;
 
-use Responder\Base\Services\BaseService;
+use Responder\Http\Request;
 
-class BookPostService extends BaseService
+class BookPostService
 {
+    protected Request $request;
     
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+    
+    // Returns the data inserted
+    public function handle(): array
+{
+    return [];
+}
 }

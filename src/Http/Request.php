@@ -2,15 +2,15 @@
 
 namespace Responder\Http;
 
-use Responder\Routing\Route;
-
 class Request
 {
     protected string $uri;
 
     protected HttpMethod $httpMethod;
 
-    protected Route $route;
+    protected array $headers = [];
+    
+    protected array $body = [];
 
     public function getUri(): string
     {
@@ -32,13 +32,23 @@ class Request
         $this->httpMethod = $httpMethod;
     }
 
-    public function getRoute(): Route
+    public function getHeaders(): array
     {
-        return $this->route;
+        return $this->headers;
     }
-
-    public function setRoute(Route $route): void
+    
+    public function setHeaders(array $headers): void
     {
-        $this->route = $route;
+        $this->headers = $headers;
+    }
+    
+    public function getBody(): array
+    {
+        return $this->body;
+    }
+    
+    public function setBody(array $body): void
+    {
+        $this->body = $body;
     }
 }

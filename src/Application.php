@@ -4,8 +4,8 @@ namespace Responder;
 
 use Exception;
 use Responder\Config\Config;
-use Responder\Http\Response;
 use Responder\Http\Request;
+use Responder\Http\Response;
 use Responder\Routing\Router;
 use Responder\Server\Server;
 

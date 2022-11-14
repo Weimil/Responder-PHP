@@ -2,36 +2,40 @@
 
 namespace App\Library\Controllers;
 
-use App\Library\Resources\BookResource;
+use App\Library\Models\BookClass;
+use App\Library\Services\Book\BookDeleteService;
 use App\Library\Services\Book\BookGetService;
+use App\Library\Services\Book\BookPatchService;
+use App\Library\Services\Book\BookPostService;
+use App\Library\Services\Book\BookPutService;
 use Responder\Base\Controllers\BaseController;
+use Responder\Http\Request;
 use Responder\Http\Response;
 
 class BookController extends BaseController
 {
-    public function get(): Response
+    public function get(Request $request): Response
     {
-        return Response::json(['Result -> GET']);
-//        return response()->json(new BookResource($service->handle()), self::HTTP_CODE_CREATED);
+        return response()->jsonTest((new BookGetService($request))->handle());
     }
 
-    public function put(): Response
+    public function put(Request $request): Response
     {
-        return Response::json(['Result -> PUT']);
+        return response()->jsonTest((new BookPutService($request))->handle());
     }
 
-    public function post(): Response
+    public function post(Request $request): Response
     {
-        return Response::json(['Result -> POST']);
+        return response()->jsonTest((new BookPostService($request))->handle());
     }
 
-    public function patch(): Response
+    public function patch(Request $request): Response
     {
-        return Response::json(['Result -> PATCH']);
+        return response()->jsonTest((new BookPatchService($request))->handle());
     }
 
-    public function delete(): Response
+    public function delete(Request $request): Response
     {
-        return Response::json(['Result -> DELETE']);
+        return response()->jsonTest((new BookDeleteService($request))->handle());
     }
 }
