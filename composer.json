@@ -9,7 +9,10 @@
             "App\\": "App/"
         },
         "files": [
-            "src/Helpers/app.php"
+            "src/Helpers/app.php",
+            "src/Helpers/config.php",
+            "src/Helpers/container.php",
+            "src/Helpers/utils.php"
         ]
     },
     "autoload-dev": {
@@ -26,7 +29,9 @@
             "email": "paubergol@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+      "ext-pdo": "*"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
     }

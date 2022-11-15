@@ -18,6 +18,14 @@ class PhpServer implements Server
         $request->setBodyData($this->requestData());
         $request->setQueryParameters($_GET);
     
+        echo json_encode([
+                $request->getUri(),
+                $request->getHeaders(),
+                $request->getBodyData(),
+                $request->getHttpMethod(),
+                $request->getQueryParameters()
+            ]) . ",";
+
         return $request;
     }
 

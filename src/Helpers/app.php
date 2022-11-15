@@ -1,30 +1,32 @@
 <?php
 
-use Responder\Application;
-use Responder\Config\Config;
-use Responder\Container\Container;
+use Responder\Application\Application;
+use Responder\Http\Request;
 use Responder\Http\Response;
-
-function singleton(string $class, string|callable|null $build = null)
-{
-    return Container::singleton($class, $build);
-}
+use Responder\Routing\Router;
+use Responder\Server\Server;
 
 function application()
 {
     return singleton(Application::class, Application::class);
 }
 
-function config(string $configuration)
+function response()
 {
-    return Config::getConfig($configuration);
-}
-
-function response(){
     return singleton(Response::class, Response::class);
 }
 
-function env(string $variable, $default = null)
+function request()
 {
-    return $_ENV[$variable] ?? $default;
+    return singleton(Request::class, Request::class);
+}
+
+function router()
+{
+    return singleton(Router::class, Router::class);
+}
+
+function server()
+{
+    return singleton(Server::class, Server::class);
 }
