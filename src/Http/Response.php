@@ -2,8 +2,6 @@
 
 namespace Responder\Http;
 
-use Responder\Base\Models\BaseClass;
-
 class Response
 {
     protected int $status = 200;
@@ -83,7 +81,9 @@ class Response
     public function prepare(): void
     {
         $this->setHeader("Content-Length", strlen($this->content));
+        
         http_response_code($this->status);
+        
         foreach ($this->headers as $header => $value) {
             header("$header: $value");
         }

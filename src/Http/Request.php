@@ -10,7 +10,9 @@ class Request
 
     protected array $headers = [];
     
-    protected array $body = [];
+    protected array $bodyData = [];
+    
+    protected array $queryParameters = [];
 
     public function getUri(): string
     {
@@ -42,13 +44,23 @@ class Request
         $this->headers = $headers;
     }
     
-    public function getBody(): array
+    public function getBodyData(): array
     {
-        return $this->body;
+        return $this->bodyData;
     }
     
-    public function setBody(array $body): void
+    public function setBodyData(array $bodyData): void
     {
-        $this->body = $body;
+        $this->bodyData = $bodyData;
+    }
+    
+    public function getQueryParameters(): array
+    {
+        return $this->queryParameters;
+    }
+    
+    public function setQueryParameters(array $queryParameters): void
+    {
+        $this->queryParameters = $queryParameters;
     }
 }

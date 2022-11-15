@@ -14,7 +14,10 @@ class PhpServer implements Server
 
         $request->setUri(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
         $request->setHttpMethod(HttpMethod::from($_SERVER["REQUEST_METHOD"]));
-
+        $request->setHeaders(getallheaders());
+        $request->setBodyData($this->requestData());
+        $request->setQueryParameters($_GET);
+    
         return $request;
     }
 
@@ -23,5 +26,23 @@ class PhpServer implements Server
         $response->prepare();
     
         print $response->getContent();
+    }
+    
+    protected function requestData(): array
+    {
+        $headers = getallheaders();
+        $isJson = isset($headers["Content-Type"]) && $headers["Content-Type"] === "application/json";
+        
+        if ($isJson) {
+            return json_decode(file_get_contents("php://input"), true);
+        }
+        
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            return $_POST;
+        }
+    
+        parse_str(file_get_contents("php://input"), $data);
+    
+        return $data;
     }
 }
