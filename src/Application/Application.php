@@ -4,20 +4,16 @@ namespace Responder\Application;
 
 use Exception;
 use Responder\Application\Boot\ApplicationBoot;
-use Responder\Config\Config;
-use Responder\Http\Request;
 use Responder\Http\Response;
-use Responder\Routing\Router;
-use Responder\Server\Server;
 
 class Application
 {
     public string $basePath;
-
+    
     public function boot(string $basePath): void
     {
         $this->basePath = $basePath;
-
+        
         (new ApplicationBoot)->handle();
     }
     

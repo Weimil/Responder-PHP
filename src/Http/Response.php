@@ -80,7 +80,7 @@ class Response
     
     public function prepare(): void
     {
-        $this->setHeader("Content-Length", strlen($this->content));
+//        $this->setHeader("Content-Length", strlen($this->content));
         
         http_response_code($this->status);
         

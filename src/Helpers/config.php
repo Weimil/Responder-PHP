@@ -7,8 +7,8 @@ function config(string $configuration)
     return Config::getConfig($configuration);
 }
 
-function loadConfig(string $configuration)
+function loadConfig(string $basePath): void
 {
-    return Config::getConfig($configuration);
+    Config::loadConfig($basePath);
 }
 

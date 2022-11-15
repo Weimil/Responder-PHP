@@ -23,27 +23,27 @@ class Route
     
     public static function get(string $uri, Closure|array $action): Route
     {
-        return application()->router->get(new Route($uri, $action));
+        return router()->get(new Route($uri, $action));
     }
     
     public static function post(string $uri, Closure|array $action): Route
     {
-        return application()->router->post(new Route($uri, $action));
+        return router()->post(new Route($uri, $action));
     }
     
     public static function put(string $uri, Closure|array $action): Route
     {
-        return application()->router->put(new Route($uri, $action));
+        return router()->put(new Route($uri, $action));
     }
     
     public static function patch(string $uri, Closure|array $action): Route
     {
-        return application()->router->patch(new Route($uri, $action));
+        return router()->patch(new Route($uri, $action));
     }
     
     public static function delete(string $uri, Closure|array $action): Route
     {
-        return application()->router->delete(new Route($uri, $action));
+        return router()->delete(new Route($uri, $action));
     }
     
     public function getUri(): string
