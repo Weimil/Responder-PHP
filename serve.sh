@@ -1,5 +1,5 @@
 while true; do
-  php -S localhost:9000 Responder.php
+  php -S localhost:9000 responder.php
   clear
   echo "Restarting in 3 seconds"
   sleep 1
