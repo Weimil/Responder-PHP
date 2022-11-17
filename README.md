@@ -1,16 +1,15 @@
 # Responder
 
-Responder is a PHP framework for REST API development. Heavily inspired by Laravel.
+Responder is a PHP framework for creating REST API. Heavily inspired by Laravel.
 
 ## Required
 
 * PHP 8.1 or higher
 * Composer
-* Database (Mysql, MariaDB, PostgreSQL)
 
 ## Usage
 
-For further information relate to the Documentation.
+TODO.
 
 ## License
 
