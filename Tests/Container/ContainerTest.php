@@ -15,43 +15,46 @@ class ContainerTest extends TestCase
 
     public function testResolvesInterface()
     {
-        Container::singleton(TestInterface::class, TestClass::class);
-        $this->assertEquals(new TestClass(), Container::singleton(TestInterface::class));
+        Container::singleton(IntegerInterface::class, TestClass::class);
+        $this->assertEquals(new TestClass(), Container::singleton(IntegerInterface::class));
     }
 
     public function testResolvesCallbackBuiltObject()
     {
-        Container::singleton(TestTestInterface::class, fn () => new TestClass(8));
-        $this->assertEquals(new TestClass(8), Container::singleton(TestTestInterface::class));
+        Container::singleton(StringInterface::class, fn () => new TestClass(8));
+        $this->assertEquals(new TestClass(8), Container::singleton(StringInterface::class));
     }
 }
 
-interface TestInterface
+interface IntegerInterface
 {
-    public function testFunction(): int;
+    public function testInteger(): int;
 }
 
-interface TestTestInterface
+interface StringInterface
 {
-    public function testTestFunction(): int;
+    public function testString(): string;
 }
 
-class TestClass implements TestInterface, TestTestInterface
+class TestClass implements StringInterface, IntegerInterface
 {
-    protected int $test;
+    protected int $integer;
+    
+    protected string $string;
 
-    public function __construct(int $test = 5)
+    public function __construct(int $integer = 5, string $string = 'string')
     {
-        $this->test = $test;
+        $this->integer = $integer;
+        $this->string = $string;
     }
 
-    public function testFunction(): int
+    public function testString(): string
     {
-        return $this->test;
+        return $this->string;
     }
 
-    public function testTestFunction(): int
+    public function testInteger(): int
     {
-        return $this->test;
+        return $this->integer;
     }
 }
