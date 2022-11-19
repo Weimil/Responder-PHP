@@ -2,7 +2,6 @@
 
 namespace App\Library\Controllers;
 
-use App\Library\Models\BookClass;
 use App\Library\Services\Book\BookDeleteService;
 use App\Library\Services\Book\BookGetService;
 use App\Library\Services\Book\BookPatchService;

@@ -7,10 +7,11 @@
       "environment": {
         "MYSQL_ROOT_PASSWORD": "root",
         "MYSQL_USER": "weimil",
-        "MYSQL_PASSWORD": "Aa1.1234"
+        "MYSQL_PASSWORD": "Aa1.1234",
+        "MYSQL_DATABASE": "responder-testing"
       },
       "ports": [
-        "8000:80"
+        "33060:3306"
       ]
     }
   }

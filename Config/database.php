@@ -13,16 +13,17 @@
 
 
 return [
-    'default' => 'mysql',
-    
+    // 'connections.mysql.driver' => 'mysql'
     'connections' => [
+        'default' => 'mysql',
+    
         'mysql' => [
             'driver' => 'mysql',
             'host' => '127.0.0.1',
-            'port' => '3306',
-            'database' => 'data',
-            'username' => 'user',
-            'password' => '',
+            'port' => 3307,
+            'database' => 'responder-testing',
+            'username' => 'weimil',
+            'password' => 'Aa1.1234',
             'options' => [
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

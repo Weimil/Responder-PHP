@@ -3,12 +3,14 @@
 namespace App\Library\Models;
 
 use App\Library\Services\Book\BookServices;
-use Responder\Base\Models\BaseModel;
+use Responder\Database\Model;
 
-class BookModel extends BaseModel
+class BookModel extends Model
 {
     // ════════════════════════════════════════
 
+    const CONNECTION = 'default';
+    
     const TABLE = 'books';
 
     const ID = 'id';
@@ -19,22 +21,10 @@ class BookModel extends BaseModel
 
     // ════════════════════════════════════════
 
-    protected string $connection;
-
-    protected string $table = self::TABLE;
-
-    protected string $primaryKey = self::ID;
-
-    // ════════════════════════════════════════
-
     public function query()
     {
         //
     }
     
-    // ════════════════════════════════════════
-    
-    const REPO = [
-        'services' => BookServices::class
-    ];
+
 }

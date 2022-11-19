@@ -11,9 +11,8 @@ class ApplicationBoot
     public function handle(): void
     {
         $this->loadConfig();
-        $this->runServiceProviders('boot');
+        $this->runServiceProviders();
         $this->setHttpHandlers();
-        $this->runServiceProviders('runtime');
     }
     
     protected function loadConfig(): void
@@ -21,9 +20,9 @@ class ApplicationBoot
         loadConfig(application()->basePath);
     }
     
-    protected function runServiceProviders(string $type): void
+    protected function runServiceProviders(): void
     {
-        foreach (config('providers')[$type] as $item) {
+        foreach (config('providers') as $item) {
             (new $item())->register();
         }
     }

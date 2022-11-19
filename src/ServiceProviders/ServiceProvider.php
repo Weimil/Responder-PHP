@@ -4,5 +4,5 @@ namespace Responder\ServiceProviders;
 
 interface ServiceProvider
 {
-    public function register();
+    public function register(): void;
 }

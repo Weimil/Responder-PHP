@@ -1,16 +1,15 @@
 <?php
 
-namespace Responder\Database;
+namespace Responder\Database\Driver;
 
 interface DatabaseDriver {
     public function connect(
-        string $protocol,
+        string $driver,
         string $host,
         int $port,
         string $database,
         string $username,
-        string $password,
-        array $options
+        string $password
     );
     
     public function close(): void;

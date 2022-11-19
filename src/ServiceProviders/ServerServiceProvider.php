@@ -7,7 +7,7 @@ use Responder\Server\Server;
 
 class ServerServiceProvider implements ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         singleton(Server::class, PhpServer::class);
     }
