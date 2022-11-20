@@ -20,7 +20,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'host' => '127.0.0.1',
-            'port' => 3307,
+            'port' => 33060,
             'database' => 'responder-testing',
             'username' => 'weimil',
             'password' => 'Aa1.1234',

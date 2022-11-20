@@ -7,7 +7,7 @@ use PDOException;
 
 class PdoDriver implements DatabaseDriver
 {
-    protected PDO $pdo;
+    protected ?PDO $pdo;
     
     public function connect(string $driver, string $host, int $port, string $database, string $username, string $password)
     {
@@ -26,14 +26,15 @@ class PdoDriver implements DatabaseDriver
     
     public function close(): void
     {
+        $this->pdo = null;
         remove(DatabaseDriver::class);
     }
     
-    public function statement(string $query, array $bind = []): array|bool
+    public function statement(string $query, array $values = []): array|bool
     {
         $statement = $this->pdo->prepare($query);
         
-        $statement->execute($bind);
+        $statement->execute($values);
     
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

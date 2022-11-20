@@ -2,11 +2,12 @@
 
 namespace Responder\Database\Driver;
 
-interface DatabaseDriver {
+interface DatabaseDriver
+{
     public function connect(
         string $driver,
         string $host,
-        int $port,
+        int    $port,
         string $database,
         string $username,
         string $password
@@ -14,5 +15,5 @@ interface DatabaseDriver {
     
     public function close(): void;
     
-    public function statement(string $query, array $bind = []): array|bool;
+    public function statement(string $query, array $values = []): array|bool;
 }

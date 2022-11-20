@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Library\Models;
+namespace Responder\Tests\Database\Model;
 
 use Responder\Database\Model;
 
-class BookModel extends Model
+class TestModel extends Model
 {
     // ════════════════════════════════════════
-
-    const CONNECTION = 'default';
     
-    const TABLE = 'books';
-
+    const TABLE = 'models';
+    
     const ID = 'id';
-
+    
+    const NAME = 'name';
+    
+    const SURNAME = 'surname';
+    
     // ════════════════════════════════════════
+    
+    protected string $table = self::TABLE;
+    
+    protected string $primaryKey = self::ID;
     
     protected array $fillables = [
-        'name'
+        self::NAME,
+        self::SURNAME
     ];
-    
-    // ════════════════════════════════════════
-
-    public function query()
-    {
-        //
-    }
 }

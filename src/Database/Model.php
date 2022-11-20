@@ -3,24 +3,32 @@
 namespace Responder\Database;
 
 use Exception;
+use Responder\Database\Driver\DatabaseDriver;
+use Responder\Database\Driver\PdoDriver;
 
 abstract class Model
 {
-    const CONNECTION = 'null';
+    protected string $connection;
     
-    const TABLE = 'null';
+    protected string $table;
     
-    const ID = 'null';
+    protected string $primaryKey;
     
-    protected string $connection = self::CONNECTION;
-    
-    protected string $table = self::TABLE;
-    
-    protected string $primaryKey = self::ID;
+    protected DatabaseDriver $driver;
     
     protected array $attributes = [];
     
     protected array $fillables = [];
+    
+    public function __construct()
+    {
+        $this->setDatabaseDriver();
+    }
+    
+    public function setDatabaseDriver(): void
+    {
+        $this->driver = singleton(DatabaseDriver::class, PdoDriver::class);
+    }
     
     public function __set(string $name, $value): void
     {
@@ -52,7 +60,10 @@ abstract class Model
     
     public function save(): static
     {
+        $columns = implode(',', array_keys($this->attributes));
+        $values = implode(',', array_fill(0, count($this->attributes), '?'));
         
+        $this->driver->statement("INSERT INTO $this->table ($columns) VALUES ($values);", array_values($this->attributes));
         
         return $this;
     }
