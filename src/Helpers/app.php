@@ -18,7 +18,7 @@ function response()
 
 function request()
 {
-    return singleton(Request::class, Request::class);
+    return singleton(Request::class);
 }
 
 function router()

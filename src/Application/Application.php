@@ -4,6 +4,7 @@ namespace Responder\Application;
 
 use Exception;
 use Responder\Application\Boot\ApplicationBoot;
+use Responder\Http\Request;
 use Responder\Http\Response;
 
 class Application
@@ -20,7 +21,7 @@ class Application
     public function run(): void
     {
         try {
-            $response = router()->resolveRequest(request());
+            $response = router()->resolveRequest(singleton(Request::class));
             server()->sendResponse($response);
         } catch (Exception $exception) {
             $response = Response::text("404 Not found\n" . $exception);

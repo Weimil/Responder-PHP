@@ -16,7 +16,7 @@ class ApplicationBoot
         $this->loadConfig();
         $this->runServiceProviders();
         $this->setHttpHandlers();
-        Model::setDatabaseDriver(singleton(DatabaseDriver::class, PdoDriver::class));
+        Model::setDatabaseDriver(singleton(DatabaseDriver::class));
     }
     
     protected function loadConfig(): void
