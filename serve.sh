@@ -1,4 +1,6 @@
 while true; do
+  composer dump-autoload
+  clear
   php -S localhost:9000 responder.php
   clear
   echo "Restarting in 3 seconds"

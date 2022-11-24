@@ -2,9 +2,7 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-$application = application();
-
-$application->boot(__DIR__ . '/..');
+$application = require __DIR__ . "/../Bootstrap/app.php";
 
 $application->run();
 

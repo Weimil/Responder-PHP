@@ -8,6 +8,6 @@ class RouteServiceProvider implements ServiceProvider
 {
     public function register(): void
     {
-        Route::load(application()->basePath . '/Routes');
+        Route::load(application()->getBasePath() . '/Routes');
     }
 }

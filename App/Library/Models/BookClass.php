@@ -2,9 +2,7 @@
 
 namespace App\Library\Models;
 
-use Responder\Base\Models\BaseClass;
-
-class BookClass extends BaseClass
+class BookClass
 {
     protected string $name;
     

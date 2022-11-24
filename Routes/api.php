@@ -25,8 +25,8 @@ use Responder\Routing\Route;
      });
  */
 
-Route::get('/test', [BookController::class, 'get']);
-Route::put('/test', [BookController::class, 'put']);
+Route::get('/create/book/table', [BookController::class, 'table']);
+Route::get('/book', [BookController::class, 'get']);
 Route::post('/test', [BookController::class, 'post']);
 Route::patch('/test', [BookController::class, 'patch']);
 Route::delete('/test', [BookController::class, 'delete']);
