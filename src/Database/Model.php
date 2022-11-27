@@ -34,6 +34,11 @@ abstract class Model
         $this->attributes[$name] = $value;
     }
     
+    public function getAttributes(): array
+    {
+        return $this->attributes;
+    }
+    
     // ════════════════════════════════════════
     
     public function save(): static
@@ -92,7 +97,7 @@ abstract class Model
         
         $models = [];
         
-        for ($i = 0; $i < count($result); $i++){
+        for ($i = 0; $i < count($result); $i++) {
             $models[] = (new static())->setAllAttributes($result[$i]);
         }
         
@@ -103,6 +108,18 @@ abstract class Model
     {
         $model = new static();
         $result = self::$driver->statement("SELECT * FROM {$model->table} LIMIT 1");
+        
+        if (count($result) === 0) {
+            return null;
+        }
+        
+        return $model->setAllAttributes($result[0]);
+    }
+    
+    public static function wherePrimaryKey(string $value): ?static
+    {
+        $model = new static();
+        $result = self::$driver->statement("SELECT * FROM {$model->table} WHERE {$model->primaryKey} = $value");
         
         if (count($result) === 0) {
             return null;

@@ -2,6 +2,7 @@
 
 namespace App\Library\Services\Book;
 
+use App\Library\Models\BookModel;
 use Responder\Http\Request;
 
 class BookPutService
@@ -13,9 +14,8 @@ class BookPutService
         $this->request = $request;
     }
     
-    // Returns the data updated
     public function handle(): array
     {
-        return [];
+
     }
 }

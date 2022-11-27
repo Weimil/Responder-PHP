@@ -2,7 +2,7 @@
 
 use Responder\Config\Config;
 
-function config(string $configuration)
+function config(string $configuration): array
 {
     return Config::getConfig($configuration);
 }

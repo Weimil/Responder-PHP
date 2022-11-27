@@ -2,7 +2,7 @@
 
 namespace App\Library\Services\Book;
 
-use App\Library\Models\BookClass;
+use App\Library\Models\BookModel;
 use Responder\Http\Request;
 
 class BookGetService
@@ -14,13 +14,14 @@ class BookGetService
         $this->request = $request;
     }
     
-    // Returns the data requested
     public function handle(): array
     {
-        return [
-            new BookClass('Name-01', 'Author-01', 850, 3),
-            new BookClass('Name-02', 'Author-02', 540, 6),
-            new BookClass('Name-03', 'Author-03', 5257, 1)
-        ];
+        $data = [];
+        
+        foreach (BookModel::all() as $book) {
+            $data[] = $book->getAttributes();
+        }
+
+        return $data;
     }
 }

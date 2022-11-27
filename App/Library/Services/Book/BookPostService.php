@@ -2,6 +2,7 @@
 
 namespace App\Library\Services\Book;
 
+use App\Library\Models\BookModel;
 use Responder\Http\Request;
 
 class BookPostService
@@ -13,9 +14,17 @@ class BookPostService
         $this->request = $request;
     }
     
-    // Returns the data inserted
     public function handle(): array
-{
-    return [];
-}
+    {
+        $data = $this->request->getBodyData();
+    
+        BookModel::create([
+            BookModel::NAME => $data[BookModel::NAME],
+            BookModel::AUTHOR => $data[BookModel::AUTHOR],
+            BookModel::PAGES => $data[BookModel::PAGES],
+            BookModel::EDITIONS => $data[BookModel::EDITIONS]
+        ]);
+    
+        return ['Done'];
+    }
 }

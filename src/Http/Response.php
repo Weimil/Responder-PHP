@@ -10,15 +10,10 @@ class Response
     
     protected ?string $content = null;
     
-    public static function json(array $objectArray): self
+    public static function json(array $data): self
     {
         $response = new Response();
-        $data = [];
-    
-        foreach ($objectArray as $object) {
-            $data[] = $object->toArray();
-        }
-        
+
         $response->setContentType("application/json");
         $response->setContent(json_encode($data));
         
