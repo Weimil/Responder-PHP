@@ -12,9 +12,9 @@ class ModelTestCase extends TestCase
     protected function setUp(): void
     {
         Model::setDatabaseDriver(singleton(DatabaseDriver::class, PdoDriver::class));
-    
+        
         $this->driver = singleton(DatabaseDriver::class);
-    
+        
         $this->driver->connect(
             'mysql',
             '127.0.0.1',
@@ -23,7 +23,7 @@ class ModelTestCase extends TestCase
             'weimil',
             'Aa1.1234'
         );
-    
+        
         $this->driver->statement('DROP TABLE IF EXISTS models');
         $this->driver->statement('
             CREATE TABLE models(

@@ -17,6 +17,10 @@ abstract class Model
     
     protected array $fillables = [];
     
+    const CREATED_AT = 'created_at';
+    
+    const UPDATED_AT = 'updated_at';
+    
     // ════════════════════════════════════════
     
     public static function setDatabaseDriver(DatabaseDriver $driver): void
