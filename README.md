@@ -7,6 +7,13 @@ Responder is a PHP framework for creating REST API. Heavily inspired by Laravel.
 * PHP 8.1 or higher
 * Composer
 
+## Start
+
+```shell
+./serve.sh
+
+```
+
 ## Usage
 
 TODO.
