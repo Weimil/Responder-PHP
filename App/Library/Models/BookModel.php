@@ -20,10 +20,6 @@ class BookModel extends Model
     
     const EDITIONS = 'editions';
     
-    const CREATED_AT = 'created_at';
-    
-    const UPDATED_AT = 'updated_att';
-    
     // ════════════════════════════════════════
     
     protected string $table = self::TABLE;

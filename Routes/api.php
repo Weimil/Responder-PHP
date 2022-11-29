@@ -88,7 +88,7 @@ Route::delete('/books', [BookController::class, 'delete']);
 // * +----------------------------------------------------------------
 
 
-Route::post('/books/tables', [BookController::class, 'table']);
+Route::post('/books/prepare', [BookController::class, 'prepare']);
 
 //Route::get('/book', [BookController::class, 'get']);
 //Route::put('/book', [BookController::class, 'put']);

@@ -16,10 +16,6 @@ class TestModel extends Model
     
     const SURNAME = 'surname';
     
-    const CREATED_AT = 'created_at';
-    
-    const UPDATED_AT = 'updated_att';
-    
     // ════════════════════════════════════════
     
     protected string $table = self::TABLE;

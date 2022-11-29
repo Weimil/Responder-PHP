@@ -2,6 +2,7 @@
 
 namespace App\Library\Services\Book;
 
+use App\Library\Models\BookModel;
 use Responder\Http\Request;
 
 class BookPatchService
@@ -13,9 +14,12 @@ class BookPatchService
         $this->request = $request;
     }
     
-    // Returns the data updated
     public function handle(): array
     {
-        return [];
+        $data = $this->request->getBodyData();
+    
+        $model = BookModel::wherePrimaryKey($data[BookModel::ID]);
+        
+        return ['code' => '200', 'date' => date("Y-m-d H:m:s")];
     }
 }

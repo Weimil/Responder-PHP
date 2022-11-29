@@ -19,7 +19,7 @@ class ModelTestCase extends TestCase
             'mysql',
             '127.0.0.1',
             33060,
-            'testing',
+            'responder-testing',
             'weimil',
             'Aa1.1234'
         );

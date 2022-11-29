@@ -1,10 +1,7 @@
 while true; do
+  docker-compose -f docker-compose.json up
   clear
-  composer dump-autoload
-  docker-compose -f docker-compose.json up -d
-  php -S localhost:9000 responder.php
   docker-compose -f docker-compose.json stop
-  clear
   echo "Restarting in 3 seconds"
   sleep 1
   echo "Restarting in 2 seconds"

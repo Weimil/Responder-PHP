@@ -31,3 +31,23 @@ try {
 }
 
 ```
+
+```php
+$driver->statement('
+    CREATE TABLE ' . BookModel::TABLE . '(
+        ' . BookModel::ID . ' VARCHAR(36),
+        ' . BookModel::AUTHOR_ID . ' VARCHAR(36),
+        ' . BookModel::NAME . ' VARCHAR(64),
+        ' . BookModel::PAGES . ' INT,
+        ' . BookModel::EDITIONS . ' INT,
+        ' . BookModel::CREATED_AT . ' TIMESTAMP NULL,
+        ' . BookModel::UPDATED_AT . ' TIMESTAMP NULL,
+
+        CONSTRAINT PK_Id PRIMARY KEY (' . BookModel::ID . '),
+        CONSTRAINT FK_Author FOREIGN KEY (' . BookModel::AUTHOR_ID . ') REFERENCES ' . AuthorModel::TABLE . '(' . AuthorModel::ID . '),
+        CONSTRAINT UQ_Author_Name UNIQUE (' . BookModel::NAME . ',' . BookModel::AUTHOR . ')
+    );
+');
+```
+
+

@@ -35,6 +35,15 @@ class Response
         return $response;
     }
     
+    public static function error(string $text): self
+    {
+        $response = self::text($text);
+    
+        $response->setStatus(404);
+        
+        return $response;
+    }
+    
     public function getStatus(): int
     {
         return $this->status;

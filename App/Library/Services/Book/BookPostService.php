@@ -18,13 +18,15 @@ class BookPostService
     {
         $data = $this->request->getBodyData();
     
-        BookModel::create([
-            BookModel::NAME => $data[BookModel::NAME],
-            BookModel::AUTHOR => $data[BookModel::AUTHOR],
-            BookModel::PAGES => $data[BookModel::PAGES],
-            BookModel::EDITIONS => $data[BookModel::EDITIONS]
-        ]);
+        $model = new BookModel();
+        
+        $model->{BookModel::NAME} = $data[BookModel::NAME];
+        $model->{BookModel::AUTHOR} = $data[BookModel::AUTHOR];
+        $model->{BookModel::PAGES} = $data[BookModel::PAGES];
+        $model->{BookModel::EDITIONS} = $data[BookModel::EDITIONS];
     
-        return ['Done'];
+        $model->save();
+        
+        return ['code' => '200', 'date' => date("Y-m-d H:m:s")];
     }
 }

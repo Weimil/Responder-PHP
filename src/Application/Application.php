@@ -3,6 +3,8 @@
 namespace Responder\Application;
 
 use Exception;
+use PDOException;
+use Responder\Http\HttpNoActionFoundException;
 use Responder\Http\Request;
 use Responder\Http\Response;
 use Responder\Routing\Router;
@@ -22,13 +24,15 @@ class Application
     {
         try {
             $response = $this->router->resolveRequest($this->request);
-            $this->server->sendResponse($response);
-        } catch (Exception $exception) {
-            $response = Response::text("404 Not found\n" . $exception);
-            $response->setStatus(404);
-            $this->server->sendResponse($response);
+        } catch (PDOException $e) {
+            $response = Response::error("403 SQL Error | " . $e->getMessage());
+        } catch (HttpNoActionFoundException $e) {
+            $response = Response::error("405 End point unknown | " . $e->getMessage());
+        } catch (Exception $e) {
+            $response = Response::error("404 Not found | " . $e->getMessage());
         }
         
+        $this->server->sendResponse($response);
         exit();
     }
     

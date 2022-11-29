@@ -2,6 +2,7 @@
 
 namespace App\Library\Services\Book;
     
+use App\Library\Models\BookModel;
 use Responder\Http\Request;
 
 class BookDeleteService
@@ -13,9 +14,14 @@ class BookDeleteService
         $this->request = $request;
     }
     
-    // Returns the data deleted
     public function handle(): array
     {
-        return [];
+        $data = $this->request->getBodyData();
+        
+        $model = BookModel::wherePrimaryKey($data[BookModel::ID]);
+        
+        $model->delete();
+        
+        return ['code' => '200', 'date' => date("Y-m-d H:m:s")];
     }
 }

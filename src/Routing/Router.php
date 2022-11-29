@@ -44,7 +44,7 @@ class Router
             }
         }
         
-        throw new HttpNoActionFoundException();
+        throw new HttpNoActionFoundException($request->getHttpMethod()->value . ' » ' . $request->getUri());
     }
     
     // ==============

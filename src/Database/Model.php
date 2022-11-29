@@ -123,7 +123,7 @@ abstract class Model
     public static function wherePrimaryKey(string $value): ?static
     {
         $model = new static();
-        $result = self::$driver->statement("SELECT * FROM {$model->table} WHERE {$model->primaryKey} = $value");
+        $result = self::$driver->statement("SELECT * FROM {$model->table} WHERE {$model->primaryKey} = '{$value}'");
         
         if (count($result) === 0) {
             return null;
