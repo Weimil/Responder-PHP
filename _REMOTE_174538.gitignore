@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-/.vscode
-/vendor
-composer.lock
-.php-cs-fixer.cache
-=======
 .vscode
 .idea/
 vendor
 composer.lock
 .phpunit.result.cache
->>>>>>> develop
 *.txt
 
 # Ignore private folders and files
